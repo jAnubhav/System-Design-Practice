@@ -8,6 +8,7 @@ public class RedLight extends State {
 
     @Override
     public void nextState(TrafficContext context) {
+        System.out.println("Changing Red to Green.");
         context.setState(new GreenLight());
     }
 }

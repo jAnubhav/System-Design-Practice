@@ -18,25 +18,18 @@ public class Game {
     }
 
     public void playGame() {
-        boolean anyWin = false;
+        board.displayBoard(); boolean anyWin = false;
 
         while (moveCounter < 9) {
-            curPlayer.makeMove(board);
-            if (board.checkWinner()) {
-                anyWin = true; break;
-            }
+            if (!curPlayer.makeMove(board)) continue;
 
-            if (curPlayer == player1) {
-                curPlayer = player2;
-            } else curPlayer = player1;
+            if (board.checkWinner()) { anyWin = true; break; }
+            curPlayer = curPlayer == player1 ? player2 : player1;
 
             moveCounter++;
         }
 
-        if (anyWin) {
-            System.out.println(curPlayer.getName() + " has Won.");
-        } else {
-            System.out.println("The Match is Draw");
-        }
+        if (!anyWin) System.out.println("The Match is Draw");
+        else System.out.println(curPlayer.getName() + " has Won.");
     }
 }

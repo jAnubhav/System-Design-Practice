@@ -1,7 +1,5 @@
 package tictactoe.players.concrete;
 
-import java.util.Scanner;
-
 import tictactoe.board.Board;
 import tictactoe.players.Player;
 import tictactoe.symbols.Symbol;
@@ -14,10 +12,8 @@ public class HumanPlayer extends Player {
     }
 
     @Override public boolean makeMove(Board board) {
-        Scanner scanner = InputScanner.getScanner();
-
         System.out.println(getName() + " is Making a move");
-        int x = scanner.nextInt(), y = scanner.nextInt();
+        int v[] = InputScanner.getInput(), x = v[0], y = v[1];
 
         return board.makeMove(x, y, getSymbol());
     }
